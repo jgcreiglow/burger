@@ -24,13 +24,13 @@ $(function() {
     $(".create-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
-  
+      console.log("buttonclicked", $(".create-form").val().trim());
       var newBurger = {
         burger_name: $("#burger").val().trim(),
       };
-  
+      console.log( newBurger);
       // Send the POST request.
-      $.ajax("/api/burgers", {
+      $.ajax("/api/burgers" , {
         type: "POST",
         data: newBurger
       }).then(
