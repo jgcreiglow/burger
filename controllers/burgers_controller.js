@@ -15,21 +15,21 @@ router.get("/", function (req, res) {
 });
 
 router.post("/api/burgers", function (req, res) {
-  cat.create(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function (result) {
-    // Send back the ID of the new quote
+  burger.create(["burger_name", [req.body.burger_name], function (result) {
+
     res.json({
       id: result.insertId
     });
-  });
+  }]);
 });
 
 router.put("/api/burgers/:id", function (req, res) {
-  var condition = "devoured = " + req.params.id;
+  var condition = "id = " + req.params.id;
 
-  console.log("devoured", condition);
+  console.log("condition", condition);
 
   burger.update({
-      devour: req.body.devoured
+      devoured: true
     },
     condition,
     function (result) {
@@ -43,3 +43,4 @@ router.put("/api/burgers/:id", function (req, res) {
 });
 
 module.exports = router;
+
